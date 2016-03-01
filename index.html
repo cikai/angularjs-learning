@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="todoList">
+<head>
+<meta charset='utf-8'>
+<title>AngularJS Demo</title>
+<link rel='stylesheet' type='text/css' href='css/lib/bootstrap.css'>
+<link rel='stylesheet' type='text/css' href='css/main.css'>
+<script src="js/lib/angular.js"></script>
+<script src="js/main.js"></script>
+</head>
+<body>
+
+	<div>
+		<h3>数据绑定例子</h3>
+		<input ng-model="text" class="form-control" placeholder="在此输入内容"></input>
+		<br />
+		<p>正在输入：</p>
+		<blockquote>{{ text }}</blockquote>
+	</div>
+
+	<hr>
+
+	<div class="todoList" ng-controller="TaskCtrl">
+		<h3>简单的todoList</h3>
+		<br />
+		<form class="form-inline">
+			<input ng-model="task" class="form-control" placeholder="在此输入内容"></input>
+			<button ng-click="add()" class="btn btn-primary">提交</button>
+		</form>
+		<h4 ng-if="tasks.length>0"><b>任务列表</b></h4>
+		<ul class="list-group">
+			<li ng-repeat="item in tasks track by $index" class="list-group-item">{{item}}
+				<button ng-click="tasks.splice($index, 1)" class="btn btn-warning">删除</button>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>
